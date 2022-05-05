@@ -10,7 +10,7 @@ export default function TodoItem({ item, index, removeTodo, handleCheckboxChange
         </p>
         {/* <p>添加时间：{item.date.toString()}</p> */}
       </div>
-      <Button type="danger" onClick={() => removeTodo(index)} >delete</Button>
+      <Button type="danger" onClick={() => removeTodo(index)} >删除</Button>
     </List.Item>
   )
 }

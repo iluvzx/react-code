@@ -10,10 +10,10 @@ import TodoItem from './components/TodoItem'
 export default class App extends Component {
   state = {
     todos: [
-      { id: 1, name: '吃饭', isDone: false, date: new Date() },
-      { id: 2, name: '睡觉', isDone: true, date: new Date() },
-      { id: 3, name: '写代码', isDone: false, date: new Date() },
-      { id: 4, name: '弹吉他', isDone: true, date: new Date() },
+      { id: 1, name: '吃饭', isDone: true, date: new Date() },
+      { id: 2, name: '睡觉', isDone: false, date: new Date() },
+      { id: 3, name: '写代码', isDone: true, date: new Date() },
+      { id: 4, name: '弹吉他', isDone: false, date: new Date() },
     ],
     value: '',
     checkAll: false
@@ -32,7 +32,14 @@ export default class App extends Component {
               insertTodo={() => this.insertTodo()}
             />
           }
-          footer={<Footer todos={todos} checkAllTodo={() => this.checkAllTodo()} checkAll={checkAll} />}
+          footer={
+            <Footer
+              todos={todos}
+              checkAllTodo={() => this.checkAllTodo()}
+              checkAll={checkAll}
+              removeCheckedTodo={() => this.removeCheckedTodo()}
+            />
+          }
           bordered
           dataSource={todos}
           renderItem={(item, index) => <TodoItem
@@ -73,10 +80,10 @@ export default class App extends Component {
 
   // 多选框发生改变
   handleCheckboxChange(index) {
-    const newData = [...this.state.todos]
-    newData[index].isDone = !newData[index].isDone
+    const todos = [...this.state.todos]
+    todos[index].isDone = !todos[index].isDone
     this.setState({
-      todos: newData
+      todos
     })
   }
 
@@ -89,5 +96,11 @@ export default class App extends Component {
       todos,
       checkAll,
     })
+  }
+
+  // 删除选中
+  removeCheckedTodo() {
+    const todos = this.state.todos.filter(ele => !ele.isDone)
+    this.setState({ todos })
   }
 }
