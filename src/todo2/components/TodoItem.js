@@ -1,6 +1,6 @@
 import { List, Button, Checkbox } from "antd";
 
-export default function TodoItem({ item, index, removeTodo, handleCheckboxChange }) {
+function TodoItem({ item, index, removeTodo, handleCheckboxChange }) {
   return (
     <List.Item >
       <div>
@@ -14,3 +14,5 @@ export default function TodoItem({ item, index, removeTodo, handleCheckboxChange
     </List.Item>
   )
 }
+
+export default TodoItem

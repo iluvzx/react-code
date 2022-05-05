@@ -6,7 +6,7 @@ export default function Header({ value, handleInputChange, insertTodo }) {
       placeholder="你今天要做什么?"
       value={value}
       onChange={e => handleInputChange(e)}
-      onPressEnter={e => insertTodo()}
+      onPressEnter={() => insertTodo()}
     />
   )
 }
