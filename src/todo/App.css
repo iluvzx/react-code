@@ -1,0 +1,10 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todo {
+  min-width: 600px;
+}
+@import '~antd/dist/antd.css';
