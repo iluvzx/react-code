@@ -53,7 +53,7 @@ export default class App extends Component {
         />
       </div>
     )
-  }
+  }  
   
   // 输入框改变
   handleInputChange(e) {
