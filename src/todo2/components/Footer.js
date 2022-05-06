@@ -1,4 +1,5 @@
 import { Checkbox, Button } from "antd";
+import PropTypes from 'prop-types'
 
 function Footer({ todos, checkAllTodo, clearDoneTodo }) {
   return (
@@ -15,10 +16,18 @@ function Footer({ todos, checkAllTodo, clearDoneTodo }) {
       </div>
       <div>任务数量：{todos.length}</div>
       <div>已完成：{todos.filter(item => item.isDone).length}</div>
-      {/* <div>已完成：{todos.reduce((prev, todo) => prev + (todo.isDone ? 1 : 0), 0)}</div> */}
       <div>未完成：{todos.filter(item => !item.isDone).length}</div>
     </>
   )
 }
+
+
+// props属性校验
+Footer.propTypes= {
+  todos: PropTypes.array,
+  checkAllTodo: PropTypes.func,
+  clearDoneTodo: PropTypes.func
+}
+
 
 export default Footer
