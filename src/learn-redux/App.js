@@ -9,14 +9,25 @@ import React, { Component } from 'react'
 import store from './store'
 
 export default class App extends Component {
+  constructor() {
+    super()
+    this.state = store.getState()
+    store.subscribe(() => this.setState(store.getState()))
+  }
   render() {
-    const { count } = store.getState()
     return (
       <>
-        <button>+1</button>
-        <span>{count}</span>
+        <button onClick={() => this.increment()}>+1</button>
+        <span>{this.state.count}</span>
         <button>-1</button>
       </>
     )
+  }
+  increment() {
+    const action = {
+      type: 'increment'
+    }
+    // 派发事件给reducer处理
+    store.dispatch(action)
   }
 }
