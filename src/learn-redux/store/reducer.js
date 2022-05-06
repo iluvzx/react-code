@@ -1,3 +1,4 @@
+import { INCREMENT, DECREMENT } from '../store/actionTypes'
 // 1.定义默认数据
 const initialState = {
   count: 0
@@ -9,13 +10,16 @@ const initialState = {
 
 // eslint-disable-next-line 
 export default (state = initialState, action) => {
-  const newState = JSON.parse(JSON.stringify(state))
   switch (action.type) {
-    case 'increment':
+    case INCREMENT:
       return {
         count: state.count + 1
       }
+    case DECREMENT:
+      return {
+        count: state.count - 1
+      }
     default:
-      return newState
+      return state
   }
 }
